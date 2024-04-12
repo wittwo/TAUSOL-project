@@ -1,0 +1,11 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/gitIntegration/platformProperties/2.0.0/schema.json",
+  "metadata": {
+    "type": "SemanticModel",
+    "displayName": "Life expectancy"
+  },
+  "config": {
+    "version": "2.0",
+    "logicalId": "442e673b-9f40-4fe6-b78b-7ec88fef8f56"
+  }
+}
