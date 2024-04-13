@@ -11,7 +11,7 @@ table Metrics
 			
 			IF(
 				ISFILTERED('Year'[Date]),
-				ERROR("Time intelligence quick measures can only be grouped or filtered by the Power BI-provided date hierarchy or primary date column."),
+				ERROR("Time intelligence quick measures wwwwv can only be grouped or filtered by the Power BI-provided date hierarchy or primary date column."),
 				VAR __PREV_YEAR = CALCULATE(AVERAGE(Indicators[Life expectancy (yrs)]), DATEADD('Year'[Date].[Date], -14, YEAR))
 				RETURN
 					DIVIDE(AVERAGE(Indicators[Life expectancy (yrs)]) - __PREV_YEAR, __PREV_YEAR)
@@ -170,8 +170,7 @@ table Metrics
 
 		annotation PBI_FormatHint = {"isGeneralNumber":true}
 
-	measure Health = SUM(Indicators[Deaths due to HIV/AIDS (per 100 000 population)])+SUM(Indicators[Plague - number of reported cases])+Sum(Indicators[Cholera - number of reported cases])+Sum(Indicators[Diphtheria - number of reported cases])+ Sum(Indicators[Estimated number of malaria deaths])+Sum(Indicators[H5N1 influenza - number of reported cases])+Sum(Indicators[Malaria - number of reported deaths])+sum(Indicators[Prevalence of tuberculosis (per 100 000 population)])
-		formatString: 0
+	measure Health = "tekst:"
 		lineageTag: 5bbd801c-50a6-4338-a38e-55c9ea7b982c
 
 	measure 'Health Expenditure' = SUM(Indicators[Community health workers density (per 10 000 population)])+ SUM(Indicators[Per capita total expenditure on health (PPP int. $)])
@@ -191,7 +190,7 @@ table Metrics
 			
 			SWITCH(
 			    TRUE(),
-			    SELECTEDVALUE('Years'[Years])<SELECTEDVALUE('Extra Year'[Extra year]), "#dddddd", 
+			    SELECTEDVALUE('Years'[Years])<SELECTEDVALUE('Extra Year'[Extra year]), "#dddddddd", 
 			    [Life Expectancy For Chart]<=30, "#D64550",
 			    [Life Expectancy For Chart]<=45, "#DE6A3E",
 			    [Life Expectancy For Chart]<=60, "#E89928",
@@ -201,7 +200,7 @@ table Metrics
 			```
 		lineageTag: 1574c8cd-0cf3-468e-a218-a0122290c669
 
-	measure 'Life Expectancy label' = CONCATENATE("Life Expectancy: ", CONCATENATE(FORMAT([Life Expectancy 2],"#,##"), " years old"))
+	measure 'Life Expectancy label' = CONCATENATE("Life Expectancy: ", CONCATENATE(FORMAT([Life Expectancy 2],"#,##"), " test"))
 		lineageTag: 143a3ded-edda-4601-85fc-3fb4c6febfd7
 
 	measure 'Water Services Access' = If(not(isblank(CALCULATE(AVERAGE(Indicators[People using at least basic drinking water services (% of population)]), 'Year'[Year] = 2016))) && not(isblank(CALCULATE(AVERAGE(Indicators[People using at least basic drinking water services (% of population)]), 'Year'[Year] = 2010))), CALCULATE(AVERAGE(Indicators[People using at least basic drinking water services (% of population)]), 'Year'[Year] = 2016) - CALCULATE(AVERAGE(Indicators[People using at least basic drinking water services (% of population)]), 'Year'[Year] = 2010))
