@@ -35,10 +35,10 @@ table Metrics
 
 		annotation PBI_FormatHint = {"isGeneralNumber":true}
 
-	measure 'Income Change' = IF(NOT(ISBLANK(CALCULATE(AVERAGE(Indicators[Income share held by lowest 20%]), 'Year'[Year] = 2016))) && NOT(ISBLANK(CALCULATE(AVERAGE(Indicators[Income share held by lowest 20%]), 'Year'[Year] = 2010 ))), CALCULATE(AVERAGE(Indicators[Income share held by lowest 20%]), 'Year'[Year] = 2016) - CALCULATE(AVERAGE(Indicators[Income share held by lowest 20%]), 'Year'[Year] = 2010))
+	measure 'Income Change' = 40
 		lineageTag: 3ec9159f-b32c-4fd0-8561-48806ff97bad
 
-		annotation PBI_FormatHint = {"isGeneralNumber":true}
+		formatStringDefinition = MIN(Legend[Bubble01]) & " #,#0.0"
 
 	measure 'GDP Old' = CALCULATE(AVERAGE(Indicators[GDP per capita (US $)]), 'Year'[Year] = 2016) - CALCULATE(AVERAGE(Indicators[GDP per capita (US $)]), 'Year'[Year] = 2010)
 		lineageTag: c237df6c-8115-4335-be1c-09a5a5cea2dc
@@ -217,6 +217,11 @@ table Metrics
 		lineageTag: 4254a74e-88b7-4a43-9d72-f8bcc51a18e0
 
 		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	measure Sales = 50
+		
+		lineageTag: 3617e607-34c0-40f8-af9e-fb0cc04f084d
+		formatStringDefinition = MIN(Legend[Bubble01]) & " #,#0.0"
 
 	column Column1
 		dataType: string
